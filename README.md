@@ -6,3 +6,5 @@ Some installatn scripts and files for student's computers
 `automatyka_amd64.sh` run as `student`
 
 `automatyka2_amd64.sh` run as `san` (admin)
+
+`update.sh` as `student`
