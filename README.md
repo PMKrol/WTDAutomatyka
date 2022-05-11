@@ -7,4 +7,5 @@ Some installatn scripts and files for student's computers
 
 `automatyka2_amd64.sh` run as `san` (admin)
 
-`update.sh` as `student`
+
+`update` updates Arduino and Eagle's library folders and installs EAGLE pcb2gcode ULP. Run as `student`
