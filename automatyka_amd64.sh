@@ -147,10 +147,6 @@ echo Type=Link >> $icon
 echo URL=http://localhost/ >> $icon
 echo Icon=text-html >> $icon
 
-### hosts
-sudo nano /etc/hostname
-sudo nano /etc/hosts
-
 #unattended
 #sudo nano /etc/apt/apt.conf.d/20auto-upgrades
 sudo cp /usr/share/unattended-upgrades/20auto-upgrades-disabled  /etc/apt/apt.conf.d/
@@ -221,6 +217,9 @@ sudo apt update && sudo apt upgrade -y
 
 
 
+### hosts
+sudo nano /etc/hostname
+sudo nano /etc/hosts
 
 ### useradd and mod ###
 sudo adduser san
