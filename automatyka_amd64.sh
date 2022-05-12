@@ -9,6 +9,7 @@ sudo apt install openssh-server openssh-client x11vnc apache2 openjdk-8-jdk gnom
 
 ### Arduino IDE ###
 sudo snap install arduino
+arduino &
 sudo usermod -a -G dialout student
 sudo apt remove modemmanager -y
 ln -s /var/lib/snapd/desktop/applications/arduino_arduino.desktop "/home/student/Pulpit/Arduino IDE"
