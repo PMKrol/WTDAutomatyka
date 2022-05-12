@@ -13,14 +13,6 @@ sudo usermod -a -G dialout student
 sudo apt remove modemmanager -y
 ln -s /var/lib/snapd/desktop/applications/arduino_arduino.desktop "/home/student/Pulpit/Arduino IDE"
 
-### Arduino libs ###
-
-### TODO
-
-
-
-
-
 ### EAGLE install ###
 #Based on https://github.com/Blunk-electronic/EAGLE_Linux_Installer
 
@@ -83,22 +75,6 @@ sudo chmod 755 /opt/eagle-$version/libexec/QtWebEngineProcess
 
 echo "Installation complete. Please adjust PATH variable."
 
-
-
-
-#sudo ./install-eagle.sh Autodesk_EAGLE_9.6.2_English_Linux_64bit.tar.gz 9.6.2
-#./install-desktop-icons.sh 9.6.2
-
-#echo 'export PATH="$PATH:/opt/eagle-9.6.2"' | sudo tee /etc/profile.d/99-eagle.sh
-#sudo chmod +x /etc/profile.d/99-eagle.sh
-#/etc/profile.d/99-eagle.sh
-
-#sudo ln -s /opt/eagle-9.6.2 /usr/bin/eagle
-
-##cho 'PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/eagle-9.6.2"' | sudo tee /etc/environment
-#echo 'export PATH="$PATH:/opt/eagle-9.6.2"' > /home/student/.bashrc
-
-
 #Create icons
 echo "installing EAGLE desktop icon" $version "..."
 
@@ -126,15 +102,19 @@ echo StartupNotify=false >> $icon
 cd ..
 
 
+### Arduino libs ###
 ### EAGLE Libs + Ulps ###
-mkdir eagleStuff
-cd eagleStuff
-wget "https://github.com/PMKrol/EagleStuff/archive/refs/heads/main.zip"
-7z x main.zip
-mv EagleStuff-main/ EAGLE
-cp EAGLE ~/ -r
-cd ..
+#mkdir eagleStuff
+#cd eagleStuff
+#wget "https://github.com/PMKrol/EagleStuff/archive/refs/heads/main.zip"
+#7z x main.zip
+#mv EagleStuff-main/ EAGLE
+#cp EAGLE ~/ -r
+#cd ..
 
+wget https://github.com/PMKrol/WTDAutomatyka/raw/main/update.sh -O update.sh
+chmod +x update.sh
+./update.sh
 
 ### Universal G-Code sender
 mkdir UGS
@@ -175,6 +155,73 @@ sudo nano /etc/hosts
 #sudo nano /etc/apt/apt.conf.d/20auto-upgrades
 sudo cp /usr/share/unattended-upgrades/20auto-upgrades-disabled  /etc/apt/apt.conf.d/
 
+### automatyka2 ###
+
+#Disable wifi settings access
+icon=disable-network-control.pkla
+
+echo [Wifi management] > $icon
+echo "Identity=unix-user:*" >> $icon
+echo Action=org.freedesktop.NetworkManager.settings.* >> $icon
+echo ResultAny=no >> $icon
+echo ResultInactive=no >> $icon
+echo ResultActive=no >> $icon
+
+echo [Wifi sysad management] >> $icon
+echo "Identity=unix-group:sudo;unix-user:root" >> $icon
+echo Action=org.freedesktop.NetworkManager.settings.* >> $icon
+echo ResultAny=yes >> $icon
+echo ResultInactive=yes >> $icon
+echo ResultActive=yes >> $icon
+
+sudo cp disable-network-control.pkla /etc/polkit-1/localauthority/50-local.d/disable-network-control.pkla
+
+#Disable screen-lock
+#TODO
+kwriteconfig5 --file kscreensaverrc --group Daemon --key Autolock false
+
+#Disable sleep
+#TODO
+sudo systemctl mask sleep.target suspend.target
+
+#Set power-button to off
+#TODO
+
+### VNC ####
+sudo apt install net-tools nmap -y
+icon=x11vnc.service
+
+echo '# File: /etc/systemd/system/x11vnc.service' > $icon
+echo '[Unit]' >> $icon
+echo 'Description="x11vnc"' >> $icon
+echo 'Requires=display-manager.service' >> $icon
+echo 'After=display-manager.service' >> $icon
+echo '' >> $icon
+echo '[Service]' >> $icon
+echo 'ExecStart=/usr/bin/x11vnc -loop -nopw -xkb -repeat -noxrecord -noxfixes -noxdamage -forever -rfbport 5900 -display :0 -auth guess' >> $icon
+echo '#ExecStart=/usr/bin/x11vnc -loop -nopw -noxdamage -forever -rfbport 5900 -auth guess -display :0' >> $icon
+echo 'ExecStop=/usr/bin/killall x11vnc' >> $icon
+echo 'Restart=on-failure' >> $icon
+echo 'RestartSec=2' >> $icon
+echo 'User=student' >> $icon
+echo '' >> $icon
+echo '[Install]' >> $icon
+echo 'WantedBy=multi-user.target' >> $icon
+
+sudo cp $icon /etc/systemd/system/x11vnc.service
+
+sudo systemctl daemon-reload
+sudo systemctl enable x11vnc.service
+sudo systemctl start x11vnc.service
+#systemctl status x11vnc.service
+
+sudo apt update && sudo apt upgrade -y
+
+### automatyka2 end ###
+
+
+
+
 ### useradd and mod ###
 sudo adduser san
 sudo usermod -a -G sudo san
@@ -183,4 +230,5 @@ echo "User san"
 su san -P -c "sudo deluser student sudo"
 
 gnome-disks
+
 systemctl reboot
