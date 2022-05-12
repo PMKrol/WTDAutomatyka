@@ -112,10 +112,6 @@ cd ..
 #cp EAGLE ~/ -r
 #cd ..
 
-wget https://github.com/PMKrol/WTDAutomatyka/raw/main/update.sh -O update.sh
-chmod +x update.sh
-./update.sh
-
 ### Universal G-Code sender
 mkdir UGS
 cd UGS
@@ -220,6 +216,10 @@ sudo apt update && sudo apt upgrade -y
 ### hosts
 sudo nano /etc/hostname
 sudo nano /etc/hosts
+
+wget https://github.com/PMKrol/WTDAutomatyka/raw/main/update.sh -O update.sh
+chmod +x update.sh
+./update.sh
 
 ### useradd and mod ###
 sudo adduser san
