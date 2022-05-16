@@ -1,0 +1,5 @@
+Pobieranie
+for i in dell1 dell2 dell3 dell4 dell5 dell6 sony1 toshiba1; do echo $i; sshpass -p 'student' scp -r -o StrictHostKeyChecking=no student@$i:/home/student/Pulpit/$i ./; done
+
+Wyłączenie
+for i in dell1 dell2 dell3 dell4 dell5 dell6 sony1 toshiba1; do echo $i; sshpass -p 'student' ssh student@$i systemctl poweroff; done
