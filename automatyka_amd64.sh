@@ -212,7 +212,20 @@ sudo apt update && sudo apt upgrade -y
 
 ### automatyka2 end ###
 
+### todo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# lid -> nothing
+# powerbutton = off
+# no screen-lock
+# x11vnc from source
 
+
+### NEW ###
+### disable password prompt for poweroff ###
+echo "[Shutdown or suspend without a password]
+Identity=unix-user:student
+Action=org.freedesktop.login1.set-wall-message;org.freedesktop.login1.halt;org.freedesktop.login1.suspend
+ResultAny=yes
+" | sudo tee /etc/polkit-1/localauthority/50-local.d/allow_shutdown_suspend.pkla
 
 ### hosts
 sudo nano /etc/hostname
