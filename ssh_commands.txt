@@ -3,3 +3,6 @@ for i in dell1 dell2 dell3 dell4 dell5 dell6 sony1 toshiba1; do echo $i; sshpass
 
 Wyłączenie
 for i in dell1 dell2 dell3 dell4 dell5 dell6 sony1 toshiba1; do echo $i; sshpass -p 'student' ssh student@$i systemctl poweroff; done
+
+Update
+for i in dell1 dell2 dell3 dell4 dell5 dell6 sony1 toshiba1 ; do echo $i; sshpass -p 'student' ssh student@$i "wget https://github.com/PMKrol/WTDAutomatyka/raw/main/update.sh -O update.sh; chmod +x update.sh; ./update.sh"; done
