@@ -8,3 +8,4 @@ wget https://github.com/PMKrol/WTDAutomatyka/archive/refs/heads/main.zip -O WTDA
 7z x WTDAutomatyka.zip -aoa
 cp -r WTDAutomatyka-main/snap/arduino/current/* /home/student/snap/arduino/current/
 cp -r WTDAutomatyka-main/EAGLE/ /home/student
+cp WTDAutomatyka-main/Dodatek.ngc /home/student/Pulpit/Dodatek.txt
