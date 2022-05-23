@@ -18,8 +18,12 @@ void setup () {
 }
 
 void loop () {
-    //Co 0.5s program odczytuje odległość i wysyła ją do komputera
+    //Odczytuje i zapamiętuje wartość odległości
     distance = distanceSensor.measureDistanceCm();
-    Serial.println(distance);
+    
+    Serial.print("Odleglosc wynosi: ");
+    Serial.print(distance);
+    Serial.print(" cm.");
+    
     delay(500);
 }
