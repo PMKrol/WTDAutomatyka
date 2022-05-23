@@ -23,7 +23,7 @@ void loop () {
     
     Serial.print("Odleglosc wynosi: ");
     Serial.print(distance);
-    Serial.print(" cm.");
+    Serial.println(" cm.");
     
     delay(500);
 }
