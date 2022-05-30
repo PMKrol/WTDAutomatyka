@@ -1,5 +1,5 @@
+//Wczytanie biblioteki, która zajmuje się komunikacją z DHT.
 #include <dhtnew.h>
-
 int dhtPin = 2;
 
 //Poinformowanie Arduino, przez który pin ma się komunikować.
@@ -13,8 +13,7 @@ void setup(){
   Serial.begin(9600);
 }
 
-void loop()
-{
+void loop(){
   //Poinstruowanie DHT, aby dokonało pomiarów.
   dht.read();
 
