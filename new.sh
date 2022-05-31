@@ -30,3 +30,5 @@ Action=org.freedesktop.login1.suspend-ignore-inhibit
 ResultAny=yes
 ResultActive=yes
 " | sudo tee /etc/polkit-1/localauthority/50-local.d/nofurtherlogin.pkla
+
+echo "OK!"
