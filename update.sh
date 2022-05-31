@@ -5,7 +5,7 @@
 
 cd ~/Pobrane
 wget -q https://github.com/PMKrol/WTDAutomatyka/archive/refs/heads/main.zip -O WTDAutomatyka.zip -q && echo "wget ok"
-echo "7z x WTDAutomatyka.zip -aoa -bso0 -bsp0"
+#echo "7z x WTDAutomatyka.zip -aoa -bso0 -bsp0"
 7z x WTDAutomatyka.zip -aoa -bso0 -bsp0
 cp -r WTDAutomatyka-main/snap/arduino/current/* /home/student/snap/arduino/current/
 cp -r WTDAutomatyka-main/EAGLE/ /home/student
