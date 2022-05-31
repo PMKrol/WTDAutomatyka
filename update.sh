@@ -4,7 +4,7 @@
 # and Arduino's library folder
 
 cd ~/Pobrane
-wget https://github.com/PMKrol/WTDAutomatyka/archive/refs/heads/main.zip -O WTDAutomatyka.zip
+wget -q https://github.com/PMKrol/WTDAutomatyka/archive/refs/heads/main.zip -O WTDAutomatyka.zip && echo "wget ok"
 7z x WTDAutomatyka.zip -aoa
 cp -r WTDAutomatyka-main/snap/arduino/current/* /home/student/snap/arduino/current/
 cp -r WTDAutomatyka-main/EAGLE/ /home/student
