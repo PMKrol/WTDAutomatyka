@@ -1,4 +1,4 @@
-LAPKI="dell1 dell2 dell3 dell4 dell5 dell6 lenovo2 toshiba1"
+LAPKI="dell1 dell2 dell3 dell4 dell5 dell6 lenovo1 lenovo2 lenovo3 toshiba1"
 
 Pobieranie
 for i in $LAPKI; do echo $i; sshpass -p 'student' scp -r -o StrictHostKeyChecking=no student@$i:/home/student/Pulpit/$i ./; done
@@ -10,7 +10,11 @@ Wyłączenie
 for i in $LAPKI; do echo $i; sshpass -p 'student' ssh student@$i systemctl poweroff; done
 
 Update
-for i in $LAPKI; do echo $i; sshpass -p 'student' ssh student@$i "wget https://github.com/PMKrol/WTDAutomatyka/raw/main/update.sh -O update.sh; chmod +x update.sh; ./update.sh"; done
+for i in $LAPKI; do echo $i; sshpass -p 'student' ssh student@$i "wget -q https://github.com/PMKrol/WTDAutomatyka/raw/main/update.sh -O update.sh && chmod +x update.sh && ./update.sh && echo 'ok'"; done
 
 List Pulpit
 for i in $LAPKI; do echo "$i ->"; sshpass -p 'student' ssh student@$i ls /home/student/Pulpit | grep -i $i; done
+
+
+Install 2nd
+$ wget https://github.com/PMKrol/WTDAutomatyka/raw/main/new.sh -O new.sh; chmod +x new.sh; ./new.sh
