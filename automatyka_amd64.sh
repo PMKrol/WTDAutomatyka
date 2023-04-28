@@ -2,7 +2,7 @@
 
 #sudo apt remove unattended-upgrades modemmanager -y
 sudo apt remove  modemmanager -y
-sudo apt install openssh-server openssh-client x11vnc apache2 openjdk-8-jdk gnome-disk-utility -y
+sudo apt install openssh-server openssh-client x11vnc apache2 openjdk-8-jdk gnome-disk-utility smartmontools -y
 
 #sleep 1h
 #systemctl reboot
