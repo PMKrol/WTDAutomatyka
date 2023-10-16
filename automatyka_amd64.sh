@@ -180,6 +180,14 @@ sudo systemctl mask sleep.target suspend.target
 #Set power-button to off
 #TODO
 
+#Disable MSI touchscreen
+icon=20-block-touchscreen-msi.rules
+
+echo "#MSI Touchscreen disable, Quanta Computer, Inc. OpticalTouchScreen" >> $icon
+echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="0408", ATTRS{idProduct}=="3008", ATTR{authorized}="0"' >> $icon
+
+sudo cp $icon /lib/udev/rules.d/
+
 ### VNC ####
 sudo apt install net-tools nmap -y
 icon=x11vnc.service
