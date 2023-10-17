@@ -120,7 +120,7 @@ mkdir UGS
 cd UGS
 #sudo apt install openjdk-8-jdk -y
 wget https://ugs.jfrog.io/ugs/UGS/v2.0.11/UniversalGcodeSender.zip
-7z x UniversalGcodeSender.zip
+7z x UniversalGcodeSender.zip -aoa
 sudo cp UniversalGcodeSender/UniversalGcodeSender.jar /opt
 echo '#! /bin/bash' > /home/student/Pulpit/UGS.sh
 echo 'java -jar /opt/UniversalGcodeSender.jar' >> /home/student/Pulpit/UGS.sh
@@ -134,7 +134,7 @@ cd ..
 ### webgcode localhost
 #sudo apt install apache2 -y
 wget "https://github.com/nraynaud/webgcode/archive/refs/heads/gh-pages.zip"
-7z x gh-pages.zip
+7z x gh-pages.zip -aoa
 sudo cp -r webgcode-gh-pages/* /var/www/html
 sudo chmod -R 775 /var/www/html
 
