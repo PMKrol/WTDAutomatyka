@@ -46,3 +46,10 @@ Action=org.freedesktop.login1.suspend-ignore-inhibit
 ResultAny=yes
 ResultActive=yes
 " | sudo tee /etc/polkit-1/localauthority/50-local.d/nofurtherlogin.pkla && echo "OK!"
+
+
+### disable brltty for 22.04
+sudo systemctl stop brltty-udev.service
+sudo systemctl mask brltty-udev.service
+sudo systemctl stop brltty.service
+sudo systemctl disable brltty.service
