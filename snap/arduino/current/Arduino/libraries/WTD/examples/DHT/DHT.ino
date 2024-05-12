@@ -1,11 +1,15 @@
-//Wczytanie biblioteki, która zajmuje się komunikacją z DHT.
+//EN: Loading the library that deals with communication with DHT.
+//PL: Wczytanie biblioteki, która zajmuje się komunikacją z DHT.
+
 #include <dhtnew.h>
 int dhtPin = 2;
 
-//Poinformowanie Arduino, przez który pin ma się komunikować.
+//EN: Telling the Arduino which pin to communicate through.
+//PL: Poinformowanie Arduino, przez który pin ma się komunikować.
 DHTNEW dht(dhtPin);
 
-//Zmienne zapamiętujące odczyty
+//EN: Variables storing readings
+//PL: Zmienne zapamiętujące odczyty
 float temp = 0;
 float hum = 0;
 
@@ -14,15 +18,19 @@ void setup(){
 }
 
 void loop(){
-  //Poinstruowanie DHT, aby dokonało pomiarów.
+  //EN: Instructing the DHT to take measurements.
+  //PL: Poinstruowanie DHT, aby dokonało pomiarów.
   dht.read();
 
-  //Zapamiętanie odczytów
+  //EN: Memorizing readings
+  //PL: Zapamiętanie odczytów
   temp = dht.getTemperature();
   hum = dht.getHumidity();
   
   Serial.print("Temp. = ");
   Serial.print(temp);
+
+  //EN: Message: "C | Hum. = "
   Serial.print(" C | Wilg. = ");
   Serial.print(hum);
   Serial.println(" %");
