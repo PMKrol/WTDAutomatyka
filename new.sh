@@ -1,1 +1,1 @@
-
+su san ./veyon.sh
