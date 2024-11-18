@@ -220,6 +220,10 @@ sudo systemctl start x11vnc.service
 
 sudo apt update && sudo apt upgrade -y
 
+#18.11.2024
+chmod +x porzadek.sh
+sudo ./porzadek.sh
+
 ### automatyka2 end ###
 
 ### todo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
