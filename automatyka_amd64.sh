@@ -4,17 +4,17 @@ sudo apt update
 
 #sudo apt remove unattended-upgrades modemmanager -y
 sudo apt remove  modemmanager -y
-sudo apt install veyon-service mc screen openssh-server openssh-client x11vnc apache2 openjdk-8-jdk gnome-disk-utility smartmontools net-tools -y
+sudo apt install veyon-service mc screen openssh-server openssh-client x11vnc apache2 openjdk-8-jdk gnome-disk-utility smartmontools net-tools arduino -y
 
 #sleep 1h
 #systemctl reboot
 
 ### Arduino IDE ###
-sudo snap install arduino
-arduino &
+#sudo snap install arduino
 sudo usermod -a -G dialout student
-sudo apt remove modemmanager -y
-ln -s /var/lib/snapd/desktop/applications/arduino_arduino.desktop "/home/student/Pulpit/Arduino IDE"
+arduino &
+#sudo apt remove modemmanager -y
+cp /var/lib/snapd/desktop/applications/arduino_arduino.desktop "/home/student/Pulpit/Arduino IDE"
 
 ### EAGLE install ###
 #Based on https://github.com/Blunk-electronic/EAGLE_Linux_Installer
