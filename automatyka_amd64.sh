@@ -4,7 +4,7 @@ sudo apt update
 
 #sudo apt remove unattended-upgrades modemmanager -y
 sudo apt remove  modemmanager -y
-sudo apt install openssh-server openssh-client x11vnc apache2 openjdk-8-jdk gnome-disk-utility smartmontools net-tools -y
+sudo apt install veyon-service mc screen openssh-server openssh-client x11vnc apache2 openjdk-8-jdk gnome-disk-utility smartmontools net-tools -y
 
 #sleep 1h
 #systemctl reboot
